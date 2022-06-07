@@ -41,7 +41,7 @@ class Student{
   }
   set setAge(newAge){
     if(newAge ==="" || typeof(newAge) === "string"){
-      throw new Error("Age must not be an empty array")
+      throw new Error("Age must not be an empty")
     }else{
       this.#age = newAge
     }
@@ -52,7 +52,7 @@ class Student{
   }
   set setCourses(newCourses){
     if(newCourses ===""){
-      throw new Error("Courses is empty")
+      throw new Error("Courses must not be empty")
     }
     else{
       this.#courses = newCourses;
