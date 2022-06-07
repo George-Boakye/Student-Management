@@ -42,8 +42,10 @@ class Student{
   set setAge(newAge){
     if(newAge ==="" || typeof(newAge) === "string"){
       throw new Error("Age must not be an empty array")
+    }else{
+      this.#age = newAge
     }
-    this.#age = newAge
+    
   }
   get getCourses(){
     return this.#courses;
@@ -52,7 +54,9 @@ class Student{
     if(newCourses ===""){
       throw new Error("Courses is empty")
     }
-    this.#courses = newCourses;
+    else{
+      this.#courses = newCourses;
+    }
   }
   sayHello(){
     return `Hello ${this.getName}`
