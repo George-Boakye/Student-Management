@@ -41,7 +41,7 @@ class Student{
   }
   set setAge(newAge){
     if(newAge ==="" || typeof(newAge) === "string"){
-      throw new Error("Age must not be an empty")
+      throw new Error("Age must not be empty and must be a number")
     }else{
       this.#age = newAge
     }
@@ -51,7 +51,7 @@ class Student{
     return this.#courses;
   }
   set setCourses(newCourses){
-    if(newCourses ===""){
+    if(newCourses ==="" || typeof(newCourses) != "object"){
       throw new Error("Courses must not be empty")
     }
     else{
@@ -69,11 +69,13 @@ class Student{
     }
     return courses
   }
+  calculateGpa(newGpa){
+    this.#gpa =  newGpa;
+    return `GPA: ${this.#gpa}`
+  }
 
 }
-let studentA = new Student("George", 3, 15, ["Twi", "English", "Science"])
-studentA.setCourses = ""
-console.log(studentA.getName)
+
 
 
 
