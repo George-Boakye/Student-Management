@@ -114,13 +114,14 @@ function enrollStudent(student) {
  * @param {string} name 
  */
 function searchStudent(name) {
-  let searchStudent = []
-  for(let index in studentRoll){
-      if( studentRoll[index].getName === name){
-      searchStudent.push(studentRoll[index]);
-    }
-  }
-  return searchStudent
+  // let searchStudent = []
+  // for(let index in studentRoll){
+  //     if( studentRoll[index].getName === name){
+  //     searchStudent.push(studentRoll[index]);
+  //   }
+  // }
+  // return searchStudent
+  return studentRoll.filter(element => element.getName === name);
 }
 
 /**
@@ -129,13 +130,14 @@ function searchStudent(name) {
  * @returns {Student[]}
  */
 function filterStudentsByGrade(grade) {
-  let studentInGrade = []
-  for(let index in studentRoll){
-    if(studentRoll[index].getGrade === grade){
-      studentInGrade.push(studentRoll[index]);
-    }
-  }
-  return studentInGrade;
+  // let studentInGrade = []
+  // for(let index in studentRoll){
+  //   if(studentRoll[index].getGrade === grade){
+  //     studentInGrade.push(studentRoll[index]);
+  //   }
+  // }
+  // return studentInGrade;
+  return studentRoll.filter(element => element.getGrade === grade);
 }
 
 /**
@@ -145,12 +147,13 @@ function filterStudentsByGrade(grade) {
  * @returns {Student[]}
  */
  function filterStudentsByAge(minAge,maxAge) {
-  let ageRange = [];
-  for(let index in studentRoll){
-    if(studentRoll[index].getAge >= minAge &&
-       studentRoll[index].getAge <= maxAge){
-      ageRange.push(studentRoll[index])
-    }
-  }
-  return ageRange;
+  // let ageRange = [];
+  // for(let index in studentRoll){
+  //   if(studentRoll[index].getAge >= minAge &&
+  //      studentRoll[index].getAge <= maxAge){
+  //     ageRange.push(studentRoll[index])
+  //   }
+  // }
+  // return ageRange;
+  return studentRoll.filter(element => element.getAge >= minAge && element.getAge <= maxAge);
 }
