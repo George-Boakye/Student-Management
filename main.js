@@ -87,8 +87,6 @@ let studentRoll = [];
  * @returns {Student} new student object
  */
 function createStudent(name, grade, age, courses) {
-  // create student
-  // return student
   return new Student(name, grade, age, courses);
 }
 
@@ -175,7 +173,7 @@ function ValidateName() {
 
 function ValidateGrade() {
   if (newGrade.value === "") {
-    setError(newGrade, "Grade input is required");
+    setError(newGrade, "Grade is required");
     return false;
   } else {
     setSucces(newGrade);
@@ -185,7 +183,7 @@ function ValidateGrade() {
 
 function validateAge() {
   if (newAge.value === "") {
-    setError(newAge, "Age input is required");
+    setError(newAge, "Age is required");
     return false;
   } else {
     setSucces(newAge);
