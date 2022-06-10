@@ -93,10 +93,10 @@ function createStudent(name, grade, age, courses) {
 // function that add new student to the studentRoll
 function addStudentToArray() {
   const student = createStudent(
-    newName.value,
+    newName.value.toUpperCase(),
     Number(newGrade.value),
     Number(newAge.value),
-    newCourses.value.split(",")
+    newCourses.value.toUpperCase().split(",")
   );
   enrollStudent(student);
 }
@@ -162,7 +162,7 @@ const setSucces = (element) => {
 };
 
 function ValidateName() {
-  if (newName.value === "") {
+  if (newName.value.trim() === "") {
     setError(newName, "Name is required");
     return false;
   } else {
@@ -172,7 +172,7 @@ function ValidateName() {
 }
 
 function ValidateGrade() {
-  if (newGrade.value === "") {
+  if (newGrade.value.trim() === "") {
     setError(newGrade, "Grade is required");
     return false;
   } else {
@@ -182,7 +182,7 @@ function ValidateGrade() {
 }
 
 function validateAge() {
-  if (newAge.value === "") {
+  if (newAge.value.trim() === "") {
     setError(newAge, "Age is required");
     return false;
   } else {
@@ -192,7 +192,7 @@ function validateAge() {
 }
 
 function validateCourses() {
-  if (newCourses.value === "") {
+  if (newCourses.value.trim() === "") {
     setError(newCourses, "Courses are required");
     return false;
   } else {
