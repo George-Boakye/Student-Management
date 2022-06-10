@@ -1,12 +1,82 @@
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="/main.js"></script>
-</head>
-<body>
-    
-</body>
+    <script src="/main.js" defer></script>
+    <link rel="stylesheet" href="/styles.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+      <h1>Student Management System</h1>
+        <form action="#" id="search">
+            <input id="searchInput"   type="text" placeholder="Student Name">
+            <button type="submit">Search</button>
+        </form>
+      <div class="form-wrapper">
+        <form action="#" id="form">
+            <div class="input-control">
+              <label for="name">Name:</label>
+              <input type="text" class="inputs form-control" id="name" />
+              <div class="error"></div>
+            </div>
+            <div class="input-control">
+              <label for="grade">Grade:</label>
+              <input type="number" class="inputs form-control" id="grade" min="1" />
+              <div class="error"></div>
+            </div>
+            <div class="input-control">
+              <label for="age">Age:</label>
+              <input type="number" class="inputs form-control" id="age"  min="1"/>
+              <div class="error"></div>
+            </div>
+            <div class="input-control">
+              <label for="courses">Courses:</label>
+              <input type="text" class="inputs form-control" id="courses" />
+              <div class="error"></div>
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+      </div>
+      <div class="display-buttons">
+          <button id="show-btn">Show Table</button>
+          <button id="hide-btn">Hide Table</button>
+      </div>
+    <div class="table_value mt-5">
+      <table class="table" id="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Grade</th>
+            <th scope="col">Age</th>
+            <th scope="col">Courses</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+        </tbody>
+      </table>
+
+      <table class="table2" id="table2">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Grade</th>
+            <th scope="col">Age</th>
+            <th scope="col">Courses</th>
+          </tr>
+        </thead>
+        <tbody id="tbody2">
+        </tbody>
+      </table>
+    </div>
+  </body>
 </html>

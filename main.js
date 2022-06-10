@@ -1,127 +1,124 @@
 // STUDENT CLASS
-class Student{
+class Student {
   #name;
   #grade;
   #age;
   #courses;
   #gpa;
 
-  constructor(name, grade,age,courses) {
+  constructor(name, grade, age, courses) {
     this.#name = name;
     this.#grade = grade;
     this.#age = age;
     this.#courses = courses;
     this.#gpa = 0;
   }
-  
+
   get getName() {
     return this.#name;
   }
   set setName(newName) {
-    if(newName === "" || typeof(newName) === "number"){
-     throw new Error("Enter valid name");
-    }else{
+    if (newName.length > 1 && typeof newName === "string") {
       this.#name = newName;
+    } else {
+      throw new Error("Enter valid name");
     }
-   
   }
-  get getGrade(){
+  get getGrade() {
     return this.#grade;
   }
-  set setGrade(newGrade){
-    if( typeof(newGrade) !="number" || newGrade ===""){
-      throw new Error("Invalid Input")
-    }else{
-      this.#grade = newGrade;
+  set setGrade(newGrade) {
+    if (typeof newGrade === "number" && newGrade.length > 0) {
+     this.#grade = newGrade;
+    } else {
+      throw new Error("Invalid Input");
     }
-    
   }
-  get getAge(){
-    return this.#age
+  get getAge() {
+    return this.#age;
   }
-  set setAge(newAge){
-    if(newAge ==="" || typeof(newAge) === "string"){
-      throw new Error("Age must not be empty and must be a number")
-    }else{
-      this.#age = newAge
+  set setAge(newAge) {
+    if (typeof newAge === "number" && newAge.length > 0) {
+      this.#age = newAge;
+    } else {
+      throw new Error("Age must not be empty and must be a number");
     }
-    
   }
-  get getCourses(){
+  get getCourses() {
     return this.#courses;
   }
-  set setCourses(newCourses){
-    if(newCourses ==="" || typeof(newCourses) != "object"){
-      throw new Error("Courses must not be empty")
-    }
-    else{
+  set setCourses(newCourses) {
+    if (newCourses.length > 0 ) {
       this.#courses = newCourses;
+    } else {
+      throw new Error("Courses must not be empty");
     }
   }
-  sayHello(){
-    return `Hello ${this.getName}`
+  sayHello() {
+    return `Hello ${this.getName}`;
   }
-  printCourses(){
+  printCourses() {
     let courses = "";
-    for(let index in this.getCourses){
-      courses += ` ${this.getCourses[index]}`
-      
+    for (let index in this.getCourses) {
+      courses += ` ${this.getCourses[index]}`;
     }
-    return courses
+    return courses;
   }
-  calculateGpa(newGpa){
-    this.#gpa =  newGpa;
-    return `GPA: ${this.#gpa}`
+  calculateGpa(newGpa) {
+    this.#gpa = newGpa;
+    return `GPA: ${this.#gpa}`;
   }
-
 }
 
-
-
-
-
-
-
-
+let newName = document.getElementById("name");
+let newGrade = document.getElementById("grade");
+let newAge = document.getElementById("age");
+let newCourses = document.getElementById("courses");
+let form = document.getElementById("form");
 // ______________________________________________
-let studentRoll = []
+let studentRoll = [];
 /**
- * 
+ *
  * Creates a student object
- * @param {string} name 
- * @param {number} age 
- * @param {string[]} courses 
- * @param {number} grade 
+ * @param {string} name
+ * @param {number} age
+ * @param {string[]} courses
+ * @param {number} grade
  * @returns {Student} new student object
  */
-function createStudent(name, age, courses, grade) {
+function createStudent(name, grade, age, courses) {
   // create student
   // return student
-  return new Student(name,grade, age, courses)
+  return new Student(name, grade, age, courses);
+}
+
+// function that add new student to the studentRoll
+function addStudentToArray() {
+  const student = createStudent(
+    newName.value,
+    Number(newGrade.value),
+    Number(newAge.value),
+    newCourses.value.split(",")
+  );
+  enrollStudent(student);
 }
 
 /**
  * Adds student to studentRoll array
- * @param {Student} student 
+ * @param {Student} student
  */
 function enrollStudent(student) {
   //append student to studentRoll array
-  studentRoll.push(student)
+  studentRoll.push(student);
 }
 
 /**
  * Search students by given name
- * @param {string} name 
+ * @param {string} name
  */
 function searchStudent(name) {
-  // let searchStudent = []
-  // for(let index in studentRoll){
-  //     if( studentRoll[index].getName === name){
-  //     searchStudent.push(studentRoll[index]);
-  //   }
-  // }
-  // return searchStudent
-  return studentRoll.filter(element => element.getName === name);
+ 
+  return studentRoll.filter((element) => element.getName.includes(name));
 }
 
 /**
@@ -130,30 +127,155 @@ function searchStudent(name) {
  * @returns {Student[]}
  */
 function filterStudentsByGrade(grade) {
-  // let studentInGrade = []
-  // for(let index in studentRoll){
-  //   if(studentRoll[index].getGrade === grade){
-  //     studentInGrade.push(studentRoll[index]);
-  //   }
-  // }
-  // return studentInGrade;
-  return studentRoll.filter(element => element.getGrade === grade);
+ 
+  return studentRoll.filter((element) => element.getGrade === grade);
 }
 
 /**
  * Returns list of students who have ages between minAge and maxAge
- * @param {number} minAge 
- * @param {number} maxAge 
+ * @param {number} minAge
+ * @param {number} maxAge
  * @returns {Student[]}
  */
- function filterStudentsByAge(minAge,maxAge) {
-  // let ageRange = [];
-  // for(let index in studentRoll){
-  //   if(studentRoll[index].getAge >= minAge &&
-  //      studentRoll[index].getAge <= maxAge){
-  //     ageRange.push(studentRoll[index])
-  //   }
-  // }
-  // return ageRange;
-  return studentRoll.filter(element => element.getAge >= minAge && element.getAge <= maxAge);
+function filterStudentsByAge(minAge, maxAge) {
+  return studentRoll.filter(
+    (element) => element.getAge >= minAge && element.getAge <= maxAge
+  );
 }
+
+// Set Error function
+const setError = (element, message) => {
+  const inputControl = element.parentElement;
+  const errorDisplay = inputControl.querySelector(".error");
+
+  errorDisplay.innerText = message;
+  inputControl.classList.add("error");
+  inputControl.classList.remove("success");
+};
+
+// Set Success function
+const setSucces = (element) => {
+  const inputControl = element.parentElement;
+  const errorDisplay = inputControl.querySelector(".error");
+
+  errorDisplay.innerText = "";
+  inputControl.classList.add("success");
+  inputControl.classList.remove("error");
+};
+
+function ValidateName() {
+  if (newName.value === "") {
+    setError(newName, "Name is required");
+    return false;
+  } else {
+    setSucces(newName);
+    return true;
+  }
+}
+
+function ValidateGrade() {
+  if (newGrade.value === "") {
+    setError(newGrade, "Grade input is required");
+    return false;
+  } else {
+    setSucces(newGrade);
+    return true;
+  }
+}
+
+function validateAge() {
+  if (newAge.value === "") {
+    setError(newAge, "Age input is required");
+    return false;
+  } else {
+    setSucces(newAge);
+    return true;
+  }
+}
+
+function validateCourses() {
+  if (newCourses.value === "") {
+    setError(newCourses, "Courses are required");
+    return false;
+  } else {
+    setSucces(newCourses);
+    return true;
+  }
+}
+
+let index = 0;
+
+let tbody = document.getElementById("tbody");
+let table = document.getElementById("table");
+
+function addDataToTable() {
+  tbody.innerHTML += ` <tr class="trow">
+<th class="numberID" scope="row">${index + 1}</th>
+<td class="name">${studentRoll[index].getName}</td>
+<td class="grade">${studentRoll[index].getGrade}</td>
+<td class="age">${studentRoll[index].getAge}</td>
+<td class="courses">${studentRoll[index].getCourses}</td>
+</tr>`;
+}
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  ValidateName();
+  ValidateGrade();
+  validateAge();
+  validateCourses();
+
+  if (
+    ValidateName() &&
+    ValidateGrade() &&
+    validateAge() &&
+    validateCourses() 
+  ) {
+    addStudentToArray();
+    addDataToTable();
+  }
+
+  index += 1;
+});
+
+
+// Hide and show butoon functions
+let showBtn = document.getElementById("show-btn");
+let hideBtn = document.getElementById("hide-btn");
+
+showBtn.addEventListener("click", () => {
+  hideBtn.style.display = "block";
+  showBtn.style.display = "none";
+  table.style.display = "block";
+});
+
+hideBtn.addEventListener("click", () => {
+  hideBtn.style.display = "none";
+  showBtn.style.display = "block";
+  table.style.display = "none";
+});
+
+
+// search button function
+let search = document.getElementById("search");
+let searchInput = document.getElementById("searchInput");
+let table2 = document.getElementById("table2");
+let tbody2 = document.getElementById("tbody2");
+
+table2.style.display = "none";
+
+search.addEventListener("submit", (e) => {
+  e.preventDefault();
+  table2.style.display = "block";
+  tbody2.innerHTML = "";
+  let studentSearched = searchStudent(searchInput.value);
+  studentSearched.forEach((student) => {
+    tbody2.innerHTML += ` <tr class="trow">
+  <th class="numberID" scope="row">-</th>
+  <td class="name">${student.getName}</td>
+  <td class="grade">${student.getGrade}</td>
+  <td class="age">${student.getAge}</td>
+  <td class="courses">${student.getCourses}</td>
+  </tr>`;
+  });
+});

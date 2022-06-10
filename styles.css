@@ -1,0 +1,72 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    padding: 20px;
+}
+
+.form-wrapper{
+    width: 500px;
+   padding: 30px;
+}
+
+.table{
+    display: none;
+    width: 100%;
+}
+
+.table thead tr, .table2 thead tr {
+    width: 100%;
+    /* display: grid; */
+   
+}
+
+.table thead tr th, .table2 thead tr th{
+    width: 300px;
+    height: 0;
+}
+
+
+#search{
+    float: right;
+}
+.display-buttons button{
+    width: 120px;
+    margin-left: 30px;
+
+}
+#hide-btn{
+    display: none;
+    position: absolute;
+    left: 20px;
+}
+#form button{
+    width: 120px;
+}
+.input-control.success input{
+    border-color: #09c372;
+  }
+  
+  .input-control.error input{
+  border-color: #ff3860;
+  }
+  .input-control .error{
+    font-size: 11px;
+    color: #ff3860;
+    height: 13px;
+  }
+  
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* .table-head{
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+  } */
